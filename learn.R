@@ -24,8 +24,8 @@ dat <- read.csv(
 # R is an object-ariented programming language
 # 	this means that each variable is an "object"
 # 	that can be queried or manipulated
-#		dat is an arbitray name, I could just as easily
-#		have put the data in an object called hotdogz
+#	dat is an arbitray name, I could just as easily
+#	have put the data in an object called hotdogz
 
 # read.csv is a function used to import csv files.
 # 	you can read about the function by typing
@@ -36,16 +36,16 @@ dat <- read.csv(
 # Description of Data ######################
 # This is a 10 minute data record from SoyFace 2010
 
-# DOY 		- Day of Year 
-# Hr 			- 24-Hour 
-# Min 		- Minute  
-# Hour 		- decimal Hour dat$Hr + dat$Min/60
-# Ta 			- air temperature recorded at 2.2 meters above the surface
-# Ts 			- soil temperature recorded 10 cm below surface
+# DOY 	- Day of Year 
+# Hr 	- 24-Hour 
+# Min 	- Minute  
+# Hour 	- decimal Hour dat$Hr + dat$Min/60
+# Ta 	- air temperature recorded at 2.2 meters above the surface
+# Ts 	- soil temperature recorded 10 cm below surface
 
 # Let's take a look at that ol' data
-str(dat) 				# prints a list of the variables in the data.frame
-head(dat) 			# prints first six rows
+str(dat) 	# prints a list of the variables in the data.frame
+head(dat)	# prints first six rows
 
 # What if we want to just look at AirTemp
 #		Here are some methods that all do the same thing
