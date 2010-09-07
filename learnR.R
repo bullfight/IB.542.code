@@ -13,10 +13,10 @@ ls() 									# check to see that the workspace is empty
 
 # Let's read in the data and put it into an object called dat
 dat <- read.csv(
-					file = "2010.SoyFace.micromet.sample.csv",
-					header = TRUE,
-					sep = ",", 
-					as.is = TRUE
+		file = "2010.SoyFace.micromet.sample.csv",
+		header = TRUE,
+		sep = ",", 
+		as.is = TRUE
 )
 
 
@@ -140,7 +140,7 @@ Ta.min <- tapply(dat$Ta, dat$DOY, min)
 # function gamma - accepts input time
 gamma <- function(time){
 	0.44 - 	0.46 * sin( { ( pi/12 ) * time } + 0.9 ) +
-					0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
+			0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
 }
 
 gamma(10) # [1] 0.59295
@@ -195,24 +195,24 @@ for(day in Days[2:length(Days)]){
 	# Time index < or = 5 
 	time <- which(dat$Hour <= 5 & dat$DOY & dat$DOY %in% day) 
 
-	dat$fTa[time] <-		Ta.max[as.character(day - 1)] * gamma( dat$Hour[time] ) + 
-											Ta.min[as.character(day)] 	* { 1 - gamma( dat$Hour[time] ) }
+	dat$fTa[time] <-	Ta.max[as.character(day - 1)] * gamma( dat$Hour[time] ) + 
+						Ta.min[as.character(day)] * { 1 - gamma( dat$Hour[time] ) }
 }
 
 for(day in Days[2:length(Days)]){
 	# Time index > 5  & Time < or = 14
 	time <- which(dat$Hour > 5 & dat$Hour <= 14 & dat$DOY %in% day)  
 
-	dat$fTa[time] <- 		Ta.max[as.character(day)] * gamma( dat$Hour[time] ) + 
-											Ta.min[as.character(day)] * { 1 - gamma( dat$Hour[time] ) }
+	dat$fTa[time] <- 	Ta.max[as.character(day)] * gamma( dat$Hour[time] ) + 
+						Ta.min[as.character(day)] * { 1 - gamma( dat$Hour[time] ) }
 }
 	
 for(day in Days[2:{length(Days) - 1}]){
 	# Time index > 14
 	time <- which(dat$Hour > 14 & dat$DOY %in% day) 
 
-	dat$fTa[time] <- 		Ta.max[as.character(day)] * gamma( dat$Hour[time] ) + 
-											Ta.min[as.character(day + 1)] * { 1 - gamma( dat$Hour[time] ) }
+	dat$fTa[time] <- 	Ta.max[as.character(day)] * gamma( dat$Hour[time] ) + 
+						Ta.min[as.character(day + 1)] * { 1 - gamma( dat$Hour[time] ) }
 }
 
 

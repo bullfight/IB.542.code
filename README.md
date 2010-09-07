@@ -14,7 +14,7 @@ In working through learning to use the functions, in (Campbell & Norman, 1998), 
 ### functions
 * [model.Functions.R](http://github.com/bullfight/IB.542.code/blob/master/model.Functions.R) contains functions we will use
 
-*you will need to download the files and preserve the file structure
+*you will need to download the files and open them in the R software*
 
 Get R up and going on your computer
 ---------------------

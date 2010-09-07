@@ -8,10 +8,10 @@ rm(list=ls())
 
 # load
 dat <- read.csv(
-					file = "2010.SoyFace.micromet.sample.csv",
-					header = TRUE,
-					sep = ",", 
-					as.is = TRUE
+		file = "2010.SoyFace.micromet.sample.csv",
+		header = TRUE,
+		sep = ",", 
+		as.is = TRUE
 )
 
 DOY.dec <- dat$DOY + dat$Hour/24
