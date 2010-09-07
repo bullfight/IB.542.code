@@ -110,7 +110,7 @@ xyplot(
 
 
 
-# But really we want to see temperature as a single line,
+# But really we want to see temperature as a single response across days,
 # to do so we need an time vector which includes both day and time
 
 # Create Decimal Day (also known as julian day)
@@ -145,7 +145,7 @@ xyplot(
 
 
 # Let's complete some more complicated tasks
-# calculate Daily Maximum
+# calculate Daily Maximum Air Temperature
 Ta.max <- tapply(X = dat$Ta, INDEX = dat$DOY, FUN = max)
 Ta.max  # vector of daily Temp max, with horizontal DOY index
 Ta.max["205"] # or
