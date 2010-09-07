@@ -2,8 +2,8 @@
 # p.schmitz@gmail.com
 # September 6 2010
 
-setwd("C:/Users/pschmitz/Desktop/2010.IB.542.Temperature")
-# setwd("~/Desktop/2010.IB.542.Temperature") #on MAC OS X
+#setwd("C:/Users/pschmitz/Desktop/ModelFolder")
+# setwd("~/Desktop/ModelFolder") #on MAC OS X
 rm(list=ls())
 
 # load
