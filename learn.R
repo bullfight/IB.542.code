@@ -8,6 +8,9 @@
 # understand, it is quite simple to check the documentation, which I explain below.
 # If you get stuck, feel free to email me, or message me on gchat
 
+# As you work through this, you should copy, select code chunks from this script and 
+# paste them into the console prompt
+
 # start by seting your working directory rewrite to be appropriate
 setwd("C:/Users/pschmitz/Desktop/2010.IB.542.Temperature/")
 # setwd("~/Desktop/2010.IB.542.Temperature/") #on MAC OS X
