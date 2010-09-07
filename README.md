@@ -3,10 +3,10 @@ IB 542 - Climate Modeling Functions
 
 About These Files
 ---------------------
-In working through learning to use the functions, in (Campbell & Norman, 1998), I am coding the function in R.  I thought it would be handy, if I could share these functions.  To go with this, I have included a file called learnR.R to work you through much of the introductory to programming with R, specifically in the context of a temperature record data set.
+In working through learning to use the functions, in (Campbell & Norman, 1998), I am coding the function in R.  I thought it would be handy, if I could share these functions.  To go with this, I have included a file called learn.R to work you through much of the introductory to programming with R, specifically in the context of a temperature record data set.
 
-* [learnR.R](http://github.com/bullfight/IB.542.code/blob/master/learnR.R). - a script you can work through to learn using R
-* [run.model.R](http://github.com/bullfight/IB.542.code/blob/master/run.model.R). - a bare bones script for running functions learned about in [learnR.R](http://github.com/bullfight/IB.542.code/blob/master/learnR.R)
+* [learn.R](http://github.com/bullfight/IB.542.code/blob/master/learn.R). - a script you can work through to learn using R
+* [run.model.R](http://github.com/bullfight/IB.542.code/blob/master/run.model.R). - a bare bones script for running functions learned about in [learn.R](http://github.com/bullfight/IB.542.code/blob/master/learn.R)
 
 ### data
 * [2010.SoyFace.micromet.sample.csv](http://github.com/bullfight/IB.542.code/blob/master/2010.SoyFace.micromet.sample.csv) 10 days of temperature record (Ta - Airtemp and Ts - Tsoil)
@@ -42,7 +42,7 @@ sequence of numbers
 
 ![Data](http://imgur.com/yJckW.png "Input Data")
 
-Open [learnR.R](http://github.com/bullfight/IB.542.code/blob/master/learnR.R) in the R software
+Open [learn.R](http://github.com/bullfight/IB.542.code/blob/master/learn.R) in the R software
 
 ![Open Script](http://imgur.com/OkbU6.png "R Script")
 
