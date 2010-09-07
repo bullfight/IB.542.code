@@ -2,25 +2,31 @@
 # p.schmitz@gmail.com
 # September 6 2010
 
+# I want to share with class, a nice introduction to R and model air temperature
+# as part of that introduction.  Things may seem obscure, but I try to give examples,
+# to explain how each part works.  If there are any functions I use that you don't 
+# understand, it is quite simple to check the documentation, which I explain below.
+# If you get stuck, feel free to email me, or message me on gchat
+
 # start by seting your working directory rewrite to be appropriate
-setwd("C:/Users/pschmitz/Desktop/2010.IB.542.Temperature")
-# setwd("~/Desktop/2010.IB.542.Temperature") #on MAC OS X
+setwd("C:/Users/pschmitz/Desktop/2010.IB.542.Temperature/")
+# setwd("~/Desktop/2010.IB.542.Temperature/") #on MAC OS X
+# setwd("~/Dropbox/classes/2010.IB.542/code/2010.IB.542.Temperature/") # pat's directory
 
 # first clear the workspace, this is a good way to be sure
 # 	that you know exactly what you are working with
-rm(list=ls()) 				# clears all objects in workspace
-ls() 									# check to see that the workspace is empty
+rm(list=ls()) # clears all objects in workspace
+ls() 			# check to see that the workspace is empty
 
 # Let's read in the data and put it into an object called dat
 dat <- read.csv(
-		file = "2010.SoyFace.micromet.sample.csv",
-		header = TRUE,
-		sep = ",", 
-		as.is = TRUE
+	file = "2010.SoyFace.micromet.sample.csv",
+	header = TRUE,
+	sep = ",", 
+	as.is = TRUE
 )
 
 
-########## ########## ########## ##########
 # R is an object-ariented programming language
 # 	this means that each variable is an "object"
 # 	that can be queried or manipulated
@@ -28,10 +34,13 @@ dat <- read.csv(
 #	have put the data in an object called hotdogz
 
 # read.csv is a function used to import csv files.
-# 	you can read about the function by typing
+# you can read about the function by typing
 ?read.csv
 
 # you can access documentation about any function in R in this manner
+
+
+
 
 # Description of Data ######################
 # This is a 10 minute data record from SoyFace 2010
@@ -66,6 +75,12 @@ seq(1, 100, 1)
 seq(1, 100, 2) 			# odd numbers
 seq(2, 100, 2) 			# even numbers
 
+
+
+
+
+
+
 # xyplot uses a formula for plotting with the form
 #		y ~ x1 + x2 | panel factor
 xyplot(
@@ -89,6 +104,11 @@ xyplot(
 	type = "l", 			
 	auto.key = list(TRUE, space = "right", points = F, lines = T)
 )
+
+
+
+
+
 
 # But really we want to see temperature as a single line,
 # to do so we need an time vector which includes both day and time
@@ -120,7 +140,10 @@ xyplot(
 
 
 
-########## ########## ########## ##########
+
+
+
+
 # Let's complete some more complicated tasks
 # calculate Daily Maximum
 Ta.max <- tapply(X = dat$Ta, INDEX = dat$DOY, FUN = max)
@@ -133,14 +156,18 @@ Ta.min <- tapply(dat$Ta, dat$DOY, min)
 
 
 
-########## ########## ########## ##########
+
+
+
+
+
 # Next lets move to building and using the model
 
 # Fourier Temperature Series (Cambell & Norman p.23)
 # function gamma - accepts input time
 gamma <- function(time){
 	0.44 - 	0.46 * sin( { ( pi/12 ) * time } + 0.9 ) +
-			0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
+				0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
 }
 
 gamma(10) # [1] 0.59295
@@ -155,15 +182,21 @@ fs <- function(time, Tn, Tx){
 fs(10, Tn = 5, Tx = 23) # [1] 15.673
 
 # Yep, thats it! The challenging part however
-# is applying these functions across the vector appropriately
+# is applying these functions across the time vector appropriately
 # We will explore these issues below
+
+
+
+
+
+
 
 # Indicies for Ta.max and Ta.min to be applied by 
 # time of Day
 # 0:5			(Tx[i - 1], Tn)
-# 5:14		(Tx, Tn)
+# 5:14			(Tx, Tn)
 # 14:24		(Tx[1], Tn[i + 1])
-# NOTE: the book has a typo written as (Tx[i - 1], Tn[i + 1])
+# NOTE: the book has a typo for 14:24 written as (Tx[i - 1], Tn[i + 1])
 
 # Remember we cannot predict all times,
 # On Day one there are no inputs for Tx[i -1]
@@ -174,17 +207,43 @@ fs(10, Tn = 5, Tx = 23) # [1] 15.673
 
 # For example
 for(i in 1:10){ print(i)}
+# this steps through the sequence 1:10
+# and assigns each number, in the sequence to i,
+# outputs i to the console with print(i),
+# then moves to the next number in the sequence, 
+# until it reaches 10
+
 
 # Here we assign each unique DOY to day, and print day to the output
-for( day in unique(dat$DOY) ){ print(day) }; rm(day)
+for( day in unique(dat$DOY) ){ print(day) } 
+
+# ok, but running the for loop left day in the workspace, 
+# lets look
+ls()
+# [1] "dat"     "day"     "DOY.dec" "fs"      "gamma"   "i"       "Ta.max"  "Ta.min" 
+
+# ah, there are a bunch of objects in the workspace, let's get rid of a couple
+rm(day, i, DOY.dec)
+
+# now
+ls()
+# [1] "dat"    "fs"     "gamma"  "Ta.max" "Ta.min"
+
+# nice, much cleaner
 
 
 
 
+
+
+
+
+
+# Using everything we have learned up to this point, I am going to jump right in.
 
 # Usage of model ######## ######## ######## ########
 # 	Build an index for each time set of times
-#		apply each equation to match these times
+#	apply each equation to match these times
 
 # Empty Vector of Not available Values
 dat$fTa <- rep(NA, length(dim(dat)[1]))
@@ -216,6 +275,11 @@ for(day in Days[2:{length(Days) - 1}]){
 }
 
 
+
+
+
+
+
 # There we go, Let's plot the data!
 
 xyplot(
@@ -244,3 +308,7 @@ xyplot(
 	main = "SoyFace Temperature Record",
 	xlab = "Julian Day"
 )
+
+# Hey, now you are a  useR! R is a fantastic tool
+# for both investigating datasets, and for plotting and modeling data
+# again feel free to email me or instant message on gchat if you get stuck

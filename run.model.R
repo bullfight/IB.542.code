@@ -2,8 +2,7 @@
 # p.schmitz@gmail.com
 # September 6 2010
 
-#setwd("C:/Users/pschmitz/Desktop/ModelFolder")
-# setwd("~/Desktop/ModelFolder") #on MAC OS X
+# setwd("~/Dropbox/classes/2010.IB.542/code/2010/IB.542.Temperature/") # Pat's directory
 rm(list=ls())
 
 # load
@@ -19,6 +18,9 @@ dat <- cbind(DOY.dec, dat)
 
 #Load Functions
 source("model.Functions.R")
+
+# Run Fourier Transform to predict temperature 
+# at an arbitrary timestep
 dat <- modelTemp(dat)
 
 # There we go, Let's plot the data!
@@ -36,6 +38,16 @@ xyplot(
 	data = dat,
 	type = "l",
 	main = "SoyFace Temperature Record",
+	xlab = "Julian Day",
+	auto.key = list(TRUE, points = F, lines = T)
+)
+
+DOY <- 207
+xyplot(
+	x = fTa + Ta ~ DOY.dec | as.factor(DOY),
+	data = dat[dat$DOY %in% DOY,],
+	type = "l",
+	main = paste("SoyFace Temperature Record, Day : ", DOY, sep = ""),
 	xlab = "Julian Day",
 	auto.key = list(TRUE, points = F, lines = T)
 )
@@ -59,6 +71,6 @@ daily.plot <- xyplot(
 	auto.key = list(TRUE, points = F, lines = T)
 )
 
-pdf(file = "daily.plot.pdf")
+pdf(file = "dailyplot.pdf")
 	print(daily.plot)
 dev.off()

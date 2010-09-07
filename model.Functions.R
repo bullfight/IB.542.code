@@ -1,12 +1,15 @@
+# (Campbell & Norman, 1998, page 23)
 gamma <- function(time){
 	0.44 - 	0.46 * sin( { ( pi/12 ) * time } + 0.9 ) +
 	0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
 }
 
+# (Campbell & Norman, 1998, page 23)
 fs <- function(time, Tn, Tx){
 	Tx * gamma(time) + Tn * (1 - gamma(time))
 }
 
+# (Campbell & Norman, 1998, page 23)
 modelTemp <- function(dat){
 
 	# Daily Max/Min
