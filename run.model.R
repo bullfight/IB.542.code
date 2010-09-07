@@ -6,13 +6,7 @@
 rm(list=ls())
 
 # load
-dat <- read.csv(
-		file = "2010.SoyFace.micromet.sample.csv",
-		header = TRUE,
-		sep = ",", 
-		as.is = TRUE
-)
-
+dat <- read.csv("2010.SoyFace.micromet.sample.csv", header = TRUE, as.is = TRUE )
 DOY.dec <- dat$DOY + dat$Hour/24
 dat <- cbind(DOY.dec, dat) 
 
@@ -21,7 +15,13 @@ source("model.Functions.R")
 
 # Run Fourier Transform to predict temperature 
 # at an arbitrary timestep
-dat <- modelTemp(dat)
+fTa <- modelTemp(
+	Ta = dat$Ta, 
+	time.vect = dat$Hour, 
+	time.inc = dat$DOY
+)
+
+dat <- cbind(dat, fTa)
 
 # There we go, Let's plot the data!
 xyplot(

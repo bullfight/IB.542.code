@@ -255,7 +255,7 @@ Days <- unique(dat$DOY)
 
 for(day in Days[2:length(Days)]){
 	# Time index < or = 5 
-	time <- which(dat$Hour <= 5 & dat$DOY & dat$DOY %in% day) 
+	time <- which(dat$Hour <= 5 & dat$DOY %in% day) 
 
 	dat$fTa[time] <-	Ta.max[as.character(day - 1)] * gamma( dat$Hour[time] ) + 
 						Ta.min[as.character(day)] * { 1 - gamma( dat$Hour[time] ) }
