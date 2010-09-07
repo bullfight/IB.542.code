@@ -42,6 +42,10 @@ sequence of numbers
 
 ![Data](http://imgur.com/yJckW.png "Input Data")
 
+Open [learnR.R](http://github.com/bullfight/IB.542.code/blob/master/learnR.R) in the R software
+
+![Open Script](http://imgur.com/OkbU6.png "R Script")
+
 
 
 
