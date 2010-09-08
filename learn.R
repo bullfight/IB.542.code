@@ -334,3 +334,4 @@ xyplot(
 # again feel free to email me or instant message on gchat if you get stuck
 
 # I have re-written the model to be more concise and take inputs in any time incriment
+# take a look at run.model.R for useage, and model.Functions.R for the source
