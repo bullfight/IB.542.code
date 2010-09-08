@@ -40,10 +40,11 @@ modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NUL
 		time.vect <- expand.grid(Hr = 0:24, Min = (0:50)/60)
 		time.vect <- time.vect$Hr + time.vect$Min
 		time.vect <- time.vect[order(time.vect)]
-	}
+		ts <- expand.grid(time.inc = time.inc, time.vect = time.vect)
+	}else(ts <- data.frame(time.inc = time.inc, time.vect = time.vect))
 	
 	# create time index
-	ts <- expand.grid(time.inc = time.inc, time.vect = time.vect)
+
 	ts <- ts[order(ts$time.inc, ts$time.vect),]
 
 	# Empty Vector
@@ -71,7 +72,7 @@ modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NUL
 						Tn[as.character(utime + 1)] * { 1 - gamma( ts$time.vect[time] ) }
 	}
 	
-	return(ts[ts$time.inc %in% time.step[2:{length(time.step) - 1}], ])
+	return(ts)
 }
 
 # (Campbell & Norman, 1998, page 30-32)
@@ -82,6 +83,8 @@ thermalTime <- function(time.inc, Tbase, Ta = NULL, Tx = NULL, Tn = NULL, Tmax =
         Tx <- tapply(Ta, time.inc, max)
         Tn <- tapply(Ta, time.inc, min)
 	}
+	
+	time.inc <- unique(time.inc)
 	
 	Ti <- (Tx + Tn) / 2
 	dTi <- Ti - Tbase
@@ -96,5 +99,7 @@ thermalTime <- function(time.inc, Tbase, Ta = NULL, Tx = NULL, Tn = NULL, Tmax =
 	# Accumulated thermal time
 	tau.n <- cumsum(dTi)
 	
-	return(list(dTi, tau.n))
+	out <- data.frame(time.inc, Tx, Tn, dTi, tau.n)
+	
+	return(out)
 }

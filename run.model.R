@@ -74,3 +74,18 @@ daily.plot <- xyplot(
 pdf(file = "PLOTS/dailyplot.pdf")
 	print(daily.plot)
 dev.off()
+
+
+# Calculate Growing Degree Days
+source("model.Functions.R")
+gdd.out <- thermalTime(
+	Ta = dat$Ta, 
+	Tbase = 14,
+	time.inc = dat$DOY
+)
+
+xyplot(dTi + tau.n + Tx + Tn ~ time.inc, 
+	gdd.out, 
+	type = "b",
+	auto.key = T
+)
