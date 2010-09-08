@@ -71,6 +71,6 @@ daily.plot <- xyplot(
 	auto.key = list(TRUE, points = F, lines = T)
 )
 
-pdf(file = "dailyplot.pdf")
+pdf(file = "PLOTS/dailyplot.pdf")
 	print(daily.plot)
 dev.off()
