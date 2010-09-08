@@ -84,6 +84,15 @@ seq(2, 100, 2) 			# even numbers
 
 
 
+
+
+# Let's plot this data.  You will need to 
+# load the library lattice, it is one of MANY packages
+# available for the R language
+# http://cran.r-project.org/web/packages/
+library(lattice)
+
+
 # xyplot uses a formula for plotting with the form
 #		y ~ x1 + x2 | panel factor
 xyplot(

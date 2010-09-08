@@ -40,10 +40,10 @@ modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NUL
 		time.vect <- expand.grid(Hr = 0:24, Min = (0:50)/60)
 		time.vect <- time.vect$Hr + time.vect$Min
 		time.vect <- time.vect[order(time.vect)]
+		
+		# create time index
 		ts <- expand.grid(time.inc = time.inc, time.vect = time.vect)
 	}else(ts <- data.frame(time.inc = time.inc, time.vect = time.vect))
-	
-	# create time index
 
 	ts <- ts[order(ts$time.inc, ts$time.vect),]
 

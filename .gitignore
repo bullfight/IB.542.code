@@ -2,3 +2,4 @@
 *.pdf
 *.homework.R
 *.homework.csv
+.Rhistory
