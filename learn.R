@@ -251,17 +251,36 @@ ls()
 # Empty Vector of Not available Values
 dat$fTa <- rep(NA, length(dim(dat)[1]))
 
-Days <- unique(dat$DOY)
+Days <- unique(dat$DOY) #index of days
+Days 
 
-for(day in Days[2:length(Days)]){
-	# Time index < or = 5 
+# we only step through days
+Days[2:{length(Days) - 1}] # [1] 201 202 203 204 205 206 207 208 209
+
+# because we need Tx and Tn values from the first and last
+# days to predict the temperature for the second and next to last day
+
+# also
+# as I showed before, the Ta.max vector has a horizontal index
+# which is a label coresponding to the DOY
+# so here we will write
+ as.character(201 - 1) # to select the temperature record
+# from the previous day
+
+# so 
+Ta.max[as.character(201 - 1)]
+
+
+# Lets Write Our Model
+for(day in Days[2:{length(Days) - 1}]){
+	# Time index < or = 5 within the current day (dat$DOY %in% day)
 	time <- which(dat$Hour <= 5 & dat$DOY %in% day) 
-
+	
 	dat$fTa[time] <-	Ta.max[as.character(day - 1)] * gamma( dat$Hour[time] ) + 
 						Ta.min[as.character(day)] * { 1 - gamma( dat$Hour[time] ) }
 }
 
-for(day in Days[2:length(Days)]){
+for(day in Days[2:{length(Days) - 1}]){
 	# Time index > 5  & Time < or = 14
 	time <- which(dat$Hour > 5 & dat$Hour <= 14 & dat$DOY %in% day)  
 
@@ -276,8 +295,6 @@ for(day in Days[2:{length(Days) - 1}]){
 	dat$fTa[time] <- 	Ta.max[as.character(day)] * gamma( dat$Hour[time] ) + 
 						Ta.min[as.character(day + 1)] * { 1 - gamma( dat$Hour[time] ) }
 }
-
-
 
 
 
@@ -315,3 +332,5 @@ xyplot(
 # Hey, now you are a  useR! R is a fantastic tool
 # for both investigating datasets, and for plotting and modeling data
 # again feel free to email me or instant message on gchat if you get stuck
+
+# I have re-written the model to be more concise and take inputs in any time incriment

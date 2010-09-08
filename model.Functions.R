@@ -12,6 +12,17 @@ fs <- function(time, Tn, Tx){
 # (Campbell & Norman, 1998, page 23)
 modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NULL){
 	
+	# this model can accept data in two forms
+
+	# continuous 
+	# Ta - air temp measured continuously
+	# time.vect - time vector coresponding to measurements of Ta
+	# time.inc - unit incriment over which to determine max/min time and model temp
+
+	# Daily
+	# Tx - daily max
+	# Tn - daily min
+	# time.inc - time incriment over which to integrate
 
 	if(!is.null(Tx) == TRUE & !is.null(Tn) == TRUE){
 		names(Tx) <- time.inc
@@ -81,7 +92,6 @@ thermalTime <- function(time.inc, Tbase, Ta = NULL, Tx = NULL, Tn = NULL, Tmax =
 	#Correct for Tmax <= Ti < Tcut 
 	sel <- which(Ti >= Tmax & Ti < Tcut)
 	dTi[sel] <- { ( { Tcut - Ti[sel] } / { Tcut - Tmax } ) * Tmax } - Tbase 
-	
 	
 	# Accumulated thermal time
 	tau.n <- cumsum(dTi)
