@@ -158,6 +158,13 @@ xyplot(
 
 # Let's complete some more complicated tasks
 # calculate Daily Maximum Air Temperature
+# we will use the functions max and min
+# you can find other functions such as these by reading
+# the documentation
+?max
+?min
+?range
+
 Ta.max <- tapply(X = dat$Ta, INDEX = dat$DOY, FUN = max)
 Ta.max  # vector of daily Temp max, with horizontal DOY index
 Ta.max["205"] # or
@@ -179,7 +186,7 @@ Ta.min <- tapply(dat$Ta, dat$DOY, min)
 # function gamma - accepts input time
 gamma <- function(time){
 	0.44 - 	0.46 * sin( { ( pi/12 ) * time } + 0.9 ) +
-				0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
+			0.11 * sin( { 2 *  ( pi/12 ) * time } + 0.9 )
 }
 
 gamma(10) # [1] 0.59295
