@@ -18,9 +18,9 @@ In working through learning to use the functions, in (Campbell & Norman, 1998), 
 
 to do so, open the page where the file is located, right click on the button titled raw and "save link as"
 
-[!RAW](http://imgur.com/K1Ixy.png "Raw DL link")
+![RAW](http://imgur.com/K1Ixy.png "Raw DL link")
 
-[!RAW save](http://imgur.com/iCNlJ.png "Raw DL link")
+![RAW save](http://imgur.com/iCNlJ.png "Raw DL link")
 
 
 Get R up and going on your computer
