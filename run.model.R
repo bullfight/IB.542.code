@@ -2,7 +2,7 @@
 # p.schmitz@gmail.com
 # September 6 2010
 
-# setwd("~/Dropbox/classes/2010.IB.542/code/2010/IB.542.Temperature/") # Pat's directory
+setwd("~/Dropbox/classes/2010.IB.542/code/2010.IB.542.Temperature/") # Pat's directory\
 rm(list=ls())
 
 # load
@@ -16,10 +16,6 @@ source("model.Functions.R")
 # Run Fourier Transform to predict temperature 
 # at an arbitrary timestep
 
-
-Tx <- tapply(dat$Ta, dat$DOY, max)
-Tn <- tapply(dat$Ta, dat$DOY, min)
-
 fTa <- modelTemp(
 	Ta = dat$Ta, 
 	time.vect = dat$Hour, 
@@ -28,13 +24,13 @@ fTa <- modelTemp(
 
 dat <- cbind(dat, fTa)
 
+library(lattice)
+
 # There we go, Let's plot the data!
 predict <- xyplot(
 	x = fTa + Ta ~ DOY.dec,
 	data = dat,
-	type = "b",
-	pch = 18,
-	cex = .3,
+	type = "l",
 	main = "SoyFace Temperature Record",
 	xlab = "Julian Day",
 	scales = list(x = list(tick.number = 15)),
@@ -45,9 +41,9 @@ predict <- xyplot(
 	}
 )
 
-pdf("modelTemp.pdf")
-print
-
+pdf("~/Desktop/modelTempfixed.pdf", width = 10)
+print(predict)
+dev.off()
 
 
 

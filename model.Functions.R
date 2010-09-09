@@ -32,7 +32,7 @@ modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NUL
 	# Daily Max/Min
 	if(!is.null(Ta) == TRUE){
 		Tx <- tapply(Ta, time.inc, max)
-		Tn <- tapply(Ta, time.inc, min)
+		Tn <- tapply(Ta[time.vect < 10], time.inc[time.vect < 10], min)
 	}
 	
 	# Construct Time Step when none available
