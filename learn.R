@@ -11,10 +11,15 @@
 # As you work through this, you should copy, select code chunks from this script and 
 # paste them into the console prompt
 
-# start by seting your working directory rewrite to be appropriate
-setwd("C:/Users/pschmitz/Desktop/2010.IB.542.Temperature/")
-# setwd("~/Desktop/2010.IB.542.Temperature/") #on MAC OS X
+# start by seting your working directory **rewrite to be appropriate to your computer**
+setwd("C:/Documents and Settings/Desktop/IB.542/")
+# setwd("~/Desktop/2010.IB.542/") #on MAC OS X
 # setwd("~/Dropbox/classes/2010.IB.542/code/2010.IB.542.Temperature/") # pat's directory
+
+# In Windows, it may simpler to change the working directory from the menu bar, goto
+# File > Change dir...
+
+
 
 # first clear the workspace, this is a good way to be sure
 # 	that you know exactly what you are working with

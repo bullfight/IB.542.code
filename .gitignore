@@ -3,3 +3,4 @@
 *.homework.R
 *.homework.csv
 .Rhistory
+.RData
