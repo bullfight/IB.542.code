@@ -15,6 +15,11 @@ source("model.Functions.R")
 
 # Run Fourier Transform to predict temperature 
 # at an arbitrary timestep
+
+
+Tx <- tapply(dat$Ta, dat$DOY, max)
+Tn <- tapply(dat$Ta, dat$DOY, min)
+
 fTa <- modelTemp(
 	Ta = dat$Ta, 
 	time.vect = dat$Hour, 
@@ -24,23 +29,29 @@ fTa <- modelTemp(
 dat <- cbind(dat, fTa)
 
 # There we go, Let's plot the data!
-xyplot(
-	x = fTa ~ DOY.dec,
-	data = dat,
-	type = "l",
-	main = "SoyFace Temperature Record",
-	xlab = "Julian Day",
-	auto.key = list(TRUE, points = F, lines = T)
-)
-
-xyplot(
+predict <- xyplot(
 	x = fTa + Ta ~ DOY.dec,
 	data = dat,
-	type = "l",
+	type = "b",
+	pch = 18,
+	cex = .3,
 	main = "SoyFace Temperature Record",
 	xlab = "Julian Day",
-	auto.key = list(TRUE, points = F, lines = T)
+	scales = list(x = list(tick.number = 15)),
+	auto.key = list(TRUE, points = F, lines = T),
+	panel = function(...){ 
+		panel.grid(h=-1,v=-15) 
+		panel.xyplot(...)
+	}
 )
+
+pdf("modelTemp.pdf")
+print
+
+
+
+
+
 
 DOY <- 207
 xyplot(

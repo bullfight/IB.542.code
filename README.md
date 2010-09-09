@@ -14,7 +14,14 @@ In working through learning to use the functions, in (Campbell & Norman, 1998), 
 ### functions
 * [model.Functions.R](http://github.com/bullfight/IB.542.code/blob/master/model.Functions.R) contains functions we will use
 
-*you will need to download the files and open them in the R software*
+### You will need to download the files and open them in the R software
+
+to do so, open the page where the file is located, right click on the button titled raw and "save link as"
+
+[!RAW](http://imgur.com/K1Ixy.png "Raw DL link")
+
+[!RAW save](http://imgur.com/iCNlJ.png "Raw DL link")
+
 
 Get R up and going on your computer
 ---------------------
