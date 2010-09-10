@@ -10,6 +10,7 @@ In working through learning to use the functions, in (Campbell & Norman, 1998), 
 
 ### data
 * [2010.SoyFace.micromet.sample.csv](http://github.com/bullfight/IB.542.code/blob/master/2010.SoyFace.micromet.sample.csv) 10 days of temperature record (Ta - Airtemp and Ts - Tsoil)
+* [CSV download link](http://github.com/bullfight/IB.542.code/raw/master/2010.SoyFace.micromet.sample.csv)
 
 ### functions
 * [model.Functions.R](http://github.com/bullfight/IB.542.code/blob/master/model.Functions.R) contains functions we will use
