@@ -17,11 +17,9 @@ In working through learning to use the equations, in (Campbell & Norman, 1998), 
 
 ### You will need to download the files and open them in the R software
 
-to do so, open the page where the file is located, right click on the button titled raw and "save link as"
+Download this directory by clicking the "Download Source" link at the top of the page
 
-![RAW](http://imgur.com/K1Ixy.png "Raw DL link")
-
-![RAW save](http://imgur.com/iCNlJ.png "Raw DL link")
+![Source](http://imgur.com/q4CIP.png "Download Source")
 
 
 Get R up and going on your computer
