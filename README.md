@@ -29,10 +29,7 @@ Get R up and going on your computer
 
 ### You will need to download and install one of the following packages
 
-* [R for Mac OS X](http://cran.r-project.org/bin/macosx/). - Click R-2.11.1.pkg (latest version)
-
-![Download R](http://imgur.com/Eg87D.png "R Download Link")
-
+* [R for Mac OS X](http://cran.r-project.org/bin/macosx/).
 * [R for Windows](http://cran.r-project.org/bin/windows/base/).
 
 ![Download R](http://imgur.com/BX1Hq.png "R Download Link")
