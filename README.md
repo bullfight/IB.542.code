@@ -3,7 +3,7 @@ IB 542 - Climate Modeling Functions
 
 About These Files
 ---------------------
-In working through learning to use the functions, in (Campbell & Norman, 1998), I am coding the function in R.  I thought it would be handy, if I could share these functions.  To go with this, I have included a file called learn.R to work you through much of the introductory to programming with R, specifically in the context of a temperature record data set.
+In working through learning to use the equations, in (Campbell & Norman, 1998), I am coding them as functions in R.  I thought it would be handy, if I could share these with you.  To go with this, I have included a file called learn.R to work you through much of the introductory to programming with R, specifically in the context of a temperature record data set.
 
 * [learn.R](http://github.com/bullfight/IB.542.code/blob/master/learn.R). - a script you can work through to learn using R
 * [run.model.R](http://github.com/bullfight/IB.542.code/blob/master/run.model.R). - a bare bones script for running functions learned about in [learn.R](http://github.com/bullfight/IB.542.code/blob/master/learn.R)
