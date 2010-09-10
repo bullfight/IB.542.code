@@ -46,19 +46,21 @@ print(predict)
 dev.off()
 
 
+# Other interesting Plots
 
 
-
-DOY <- 207
+# Plot a single Day
+Day <- 207
 xyplot(
 	x = fTa + Ta ~ DOY.dec | as.factor(DOY),
-	data = dat[dat$DOY %in% DOY,],
+	data = dat[dat$DOY %in% Day,],
 	type = "l",
-	main = paste("SoyFace Temperature Record, Day : ", DOY, sep = ""),
+	main = paste("SoyFace Temperature Record, Day : ", Day, sep = ""),
 	xlab = "Julian Day",
 	auto.key = list(TRUE, points = F, lines = T)
 )
 
+#Plot all days in panels
 xyplot(
 	x = fTa + Ta ~ Hour | as.factor(DOY),
 	data = dat,
@@ -67,6 +69,13 @@ xyplot(
 	xlab = "Hour",
 	auto.key = list(TRUE, points = F, lines = T)
 )
+
+# Plot all days as panels, with each plot separate
+# this can then be handed off to pdf() and each plot
+# will be it's own page
+# we use the layout = c(1,1) to do this
+# similarly if we wanted a 4 x 4 plot we could use
+# layout = c(4,4) or 2 x 1 layout = c(2,1)
 
 daily.plot <- xyplot(
 	x = fTa + Ta ~ Hour | as.factor(DOY),
