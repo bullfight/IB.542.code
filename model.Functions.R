@@ -23,13 +23,14 @@ modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NUL
 	# Tx - daily max
 	# Tn - daily min
 	# time.inc - time incriment over which to integrate
+	
 
 	if(!is.null(Tx) == TRUE & !is.null(Tn) == TRUE){
 		names(Tx) <- time.inc
 		names(Tn) <- time.inc
 	}
 	
-	# Daily Max/Min
+	# Calculate Daily Max/Min
 	if(!is.null(Ta) == TRUE){
 		Tx <- tapply(Ta, time.inc, max)
 		Tn <- tapply(Ta[time.vect < 10], time.inc[time.vect < 10], min)
@@ -54,20 +55,20 @@ modelTemp <- function(Ta = NULL, time.vect = NULL, time.inc, Tx = NULL, Tn = NUL
 
 	time.step <- unique(time.inc)
 	for(utime in time.step[2:{length(time.step) - 1}]){
+		
+		#0 -5
 		time <- which(ts$time.vect <= 5 & ts$time.inc %in% utime) 
 
 		ts$fTa[time] <-	Tx[as.character(utime - 1)] * gamma( ts$time.vect[time] ) + 
 				Tn[as.character(utime)] * { 1 - gamma( ts$time.vect[time] ) }
-	}
-
-	for(utime in time.step[2:{length(time.step) - 1}]){
+		
+		#5-14
 		time <- which(ts$time.vect > 5 & ts$time.vect <= 14 & ts$time.inc %in% utime)  
 
 		ts$fTa[time] <- Tx[as.character(utime)] * gamma( ts$time.vect[time] ) + 
 				Tn[as.character(utime)] * { 1 - gamma( ts$time.vect[time] ) }
-	}
-	
-	for(utime in time.step[2:{length(time.step) - 1}]){
+		
+		#14-24
 		time <- which(ts$time.vect > 14 & ts$time.inc %in% utime) 
 
 		ts$fTa[time] <- Tx[as.character(utime)] * gamma( ts$time.vect[time] ) + 
