@@ -23,7 +23,7 @@
 # You can also use the command setwd() as in
 # setwd("C:/Documents and Settings/Desktop/IB.542/") # On Windows
 # setwd("~/Desktop/2010.IB.542/") # on MAC OS X
-# setwd("~/Dropbox/classes/2010.IB.542/code/2010.IB.542.Temperature/") # Pat's directory
+# setwd("~/Dropbox/classes/2010.IB.542/code/temperature/") # Pat's directory
 
 # now check to make sure you are in the right directory
 getwd()
@@ -39,7 +39,19 @@ list.files()
 rm(list=ls()) # clears all objects in workspace
 ls() # check to see that the workspace is empty
 
+
 # Let's read in the data and put it into an object called dat
+
+# read.csv() is a function used to import csv files.
+# all functions in R follow the form of
+# function()
+# options for the function you are using are given
+# inside of the parenthesis, separated by commas "(option 1 = 1, option2 = 2)"
+
+#select this entire 6 lines of code
+# it is split up to make it easier to read, commas are important, but spaces and 
+# line breaks make no difference.
+
 dat <- read.csv(
 	file = "2010.SoyFace.micromet.sample.csv",
 	header = TRUE,
@@ -47,19 +59,6 @@ dat <- read.csv(
 	as.is = TRUE
 )
 
-# R is an object-ariented programming language
-# this means that each variable is an "object"
-# that can be queried or manipulated
-# "dat" is an arbitray name, I could just as easily
-# have put the data in an object named "cookies"
-# It is important to note that R is case-sensitive
-# cookies ≠ Cookies ≠ COOKIES
-
-# read.csv() is a function used to import csv files.
-# all functions in R follow the form of
-# function()
-# options for the function you are using are given
-# inside of the parenthesis, separated by commas "(option 1 = 1, option2 = 2)"
 
 # you can read about the function by typing
 ?read.csv
@@ -73,6 +72,14 @@ read.csv
 # It may however take a bit to get used to they layout
 
 
+
+# R is an object-ariented programming language
+# this means that each variable is an "object"
+# that can be queried or manipulated
+# "dat" is an arbitray name, I could just as easily
+# have put the data in an object named "cookies"
+# It is important to note that R is case-sensitive
+# cookies ≠ Cookies ≠ COOKIES
 
 # Description of Data ######################
 
@@ -158,6 +165,7 @@ xyplot(
 	type = "l", 			
 	auto.key = list(TRUE, space = "right", points = F, lines = T)
 )
+
 
 # But really we want to see temperature as a single response across days,
 # to do so we need an time vector which includes both day and time
@@ -374,7 +382,7 @@ xyplot(
 # is underpredicted
 
 # on days in which the night time temperature falls much lower than that of the previous day, 
-# that the daily minimum occurs at the end of the day and not in the morning,
+# the daily minimum occurs at the end of the day and not in the morning,
 # now this doesn't reflect the way the model was designed, where we use the daily
 # minimum and the previous day's max to determine the early morning hours in
 # which the daily morning minimum is reached.
